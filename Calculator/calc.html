@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./calc.css" type="text/css" />
+    <script src="calc.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="container text-center" id="calc">
+        <div class="calcBG col-md-3 col-md-offset-4 text-center">
+            <div class="row">
+                <small>Simple Calculator</small>
+            </div>
+            <div class="row" id="result">
+                <form name="calc">
+                    <input type="text" class="screen text-right" name="result" readonly>
+                </form>
+            </div>
+            <div class="row">
+                <button class="btn btn-info" onclick="append('7')">7</button>
+                <button class="btn btn-info" onclick="append('8')">8</button>
+                <button class="btn btn-info" onclick="append('9')">9</button>
+                <button class="btn btn-info" onclick="append('/')">/</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-info" onclick="append('4')">4</button>
+                <button class="btn btn-info" onclick="append('5')">5</button>
+                <button class="btn btn-info" onclick="append('6')">6</button>
+                <button class="btn btn-info" onclick="append('*')">*</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-info" onclick="append('1')">1</button>
+                <button class="btn btn-info" onclick="append('2')">2</button>
+                <button class="btn btn-info" onclick="append('3')">3</button>
+                <button class="btn btn-info" onclick="append('-')">-</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-info" onclick="append('0')">0</button>
+                <button class="btn btn-info" onclick="append('.')">.</button>
+                <button class="btn btn-info" onclick="backspace()">←</button>
+                <button class="btn btn-info" onclick="append('+')">+</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-info" onclick="append('(')">(</button>
+                <button class="btn btn-info" onclick="append(')')">)</button>
+                <button id="clear" class="btn btn-warning" onclick="clearScreen()">CE</button>
+                <button id="equals" class="btn btn-success" onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

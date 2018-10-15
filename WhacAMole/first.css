@@ -1,0 +1,65 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-image: url('./image/bg.jpg');
+    background-position: 50%;
+    justify-content: center;
+    position: relative;
+}
+
+body:hover {
+    cursor: url("./image/cursor.png"), auto;
+}
+
+body:active {
+    cursor: url("./image/cursor-down.png"), auto;
+}
+
+#board {
+    user-select: none;
+    width: 760px;
+    height: 400px;
+    margin: 100px auto 0 auto;
+}
+
+#board div {
+    width: 160px;
+    height: 140px;
+    display: inline-block;
+    margin-right: 30px;
+    position: relative;
+}
+
+.hole {
+    display: inline-block;
+    width: 160px;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+}
+
+.mole {
+    width: 100px;
+    z-index: 10;
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+}
+
+#count {
+    display: block;
+    width: 110px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    background-color: brown;
+    color: white;
+    margin-top: 200px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
