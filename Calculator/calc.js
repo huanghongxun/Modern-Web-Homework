@@ -1,31 +1,58 @@
 let evaluated = false;
 
-// Determines button clicked via id
 function append(str) {
     if (evaluated) {
         clearScreen();
         evaluated = false;
     }
 
-    document.calc.result.value += str;
+    calc.value += str;
 }
 
 function backspace() {
-    document.calc.result.value = document.calc.result.value.substring(0, document.calc.result.value.length - 1)
+    calc.value = calc.value.substring(0, calc.value.length - 1)
 }
 
-// Clears calculator input screen
 function clearScreen() {
-    document.calc.result.value = "";
+    calc.value = "";
 }
 
-// Calculates input values
 function calculate() {
     evaluated = true;
     try {
-        var input = eval(document.calc.result.value);
-        document.calc.result.value = input;
+        var input = eval(calc.value);
+        calc.value = input;
     } catch (err) {
-        document.calc.result.value = "Error";
+        calc.value = "表达式错误";
     }
+}
+
+function applyDragTo(draggable, movement) {
+    let target = movement;
+    
+    window.addEventListener('mousedown', function(e) {
+        this.mouseX = e.pageX;
+        this.mouseY = e.pageY;
+
+        this.initX = target.offsetLeft;
+        this.initY = target.offsetTop;
+
+        this.dragging = true;
+    }, false);
+
+    window.addEventListener('mousemove', function(e) {
+        if (this.dragging) {
+            target.style.left = (e.pageX - this.mouseX + this.initX) + "px";
+            target.style.top = (e.pageY - this.mouseY + this.initY) + "px";
+        }
+    }, false);
+
+    window.addEventListener('mouseup', function(e) {
+        this.dragging = false;
+    }, false);
+}
+
+window.onload = function() {
+    applyDragTo(document.getElementById("title"),
+        document.getElementById("calculator"));
 }
