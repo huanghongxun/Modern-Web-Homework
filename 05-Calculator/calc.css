@@ -1,0 +1,152 @@
+/**
+ * Stu. Name: Yuhui Huang
+ * Stu. ID: 17343050
+ * Uni.: Sun Yat-sen University
+ * Class: Software Engineering Class 2
+ */
+
+body {
+    background: linear-gradient(to top right, #83a4d4, #b6fbff);
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.fixed {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+}
+
+.container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+button {
+    font-family: "Microsoft Yahei";
+}
+
+input {
+    border: none;
+}
+
+*:focus {
+    outline: 0 !important;
+}
+
+.row {
+    font-size: 0;
+}
+
+.screen {
+    width: 304px;
+    padding: 10px;
+    margin: 10px 2px;
+    font-size: 40px;
+    font-family: "Microsoft Yahei";
+    font-weight: bold;
+    background: #E6E6E6;
+}
+
+/* Hidden button for formatting sake */
+
+#blank {
+    visibility: hidden;
+}
+
+.calculator {
+    background-color: #E6E6E6;
+    border: #29CCBF 1px solid;
+    padding: 4px;
+    width: 328px;
+    height: 377px;
+    box-shadow: 0 0 15px gray;
+
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#calculator {
+    left: 40%;
+    top: 20%;
+}
+
+.button {
+    color: black;
+    font-size: 20px;
+    text-align: center;
+
+    height: 50px;
+    width: 80px;
+    margin: 1px;
+    border: none !important;
+}
+
+.digit {
+    font-weight: bold;
+    background-color: #FAFAFA;
+}
+
+.digit:hover {
+    background-color: #D1D1D1;
+}
+
+.digit:active {
+    background-color: #BBBBBB;
+}
+
+.operator {
+    background-color: #F0F0F0;
+}
+
+.operator:hover {
+    background-color: #D1D1D1;
+}
+
+.operator:active {
+    background-color: #BBBBBB;
+}
+
+.special-operator {
+    background-color: #F0F0F0;
+    color: black;
+}
+
+.special-operator:hover {
+    background-color: #29CCBF;
+    color: white;
+}
+
+.special-operator:active {
+    background-color: #B3FFF9;
+    color: white;
+}
+
+.title {
+    user-select: none;
+    padding: 4px 0px 4px 8px;
+    color: black;
+    font-size: 12px;
+}
+
+.text-right {
+    text-align: right;
+}

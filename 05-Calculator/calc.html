@@ -1,0 +1,64 @@
+<!--
+    Stu. Name: Yuhui Huang
+    Stu. ID: 17343050
+    Uni.: Sun Yat-sen University
+    Class: Software Engineering Class 2
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>计算器</title>
+    <link rel="stylesheet" href="./calc.css" type="text/css" />
+    <script src="calc.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="fixed">
+        计算器窗口可以拖动哟
+    </div>
+    <div class="container">
+        <div class="calculator" id="calculator">
+            <div class="title" id="title">
+                计算器
+            </div>
+            <div>
+                <input type="text" class="screen text-right" id="calc" readonly />
+            </div>
+            <div class="row">
+                <button class="button operator" onclick="append('(')">(</button>
+                <button class="button operator" onclick="append(')')">)</button>
+                <button class="button operator" onclick="backspace()">←</button>
+                <button class="button special-operator" onclick="append('/')">÷</button>
+            </div>
+            <div class="row">
+                <button class="button digit" onclick="append('7')">7</button>
+                <button class="button digit" onclick="append('8')">8</button>
+                <button class="button digit" onclick="append('9')">9</button>
+                <button class="button special-operator" onclick="append('*')">×</button>
+            </div>
+            <div class="row">
+                <button class="button digit" onclick="append('4')">4</button>
+                <button class="button digit" onclick="append('5')">5</button>
+                <button class="button digit" onclick="append('6')">6</button>
+                <button class="button special-operator" onclick="append('-')">－</button>
+            </div>
+            <div class="row">
+                <button class="button digit" onclick="append('1')">1</button>
+                <button class="button digit" onclick="append('2')">2</button>
+                <button class="button digit" onclick="append('3')">3</button>
+                <button class="button special-operator" onclick="append('+')">＋</button>
+            </div>
+            <div class="row">
+                <button class="button operator" onclick="clearScreen()">CE</button>
+                <button class="button digit" onclick="append('0')">0</button>
+                <button class="button operator" onclick="append('.')">.</button>
+                <button class="button special-operator" onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

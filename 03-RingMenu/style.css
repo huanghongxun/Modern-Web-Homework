@@ -1,0 +1,235 @@
+/**
+ *
+ * Ring Menu - style.css
+ * Author - 黄昱珲
+ * SID - 17343050
+ *
+ */
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#at-plus-container {
+    vertical-align: bottom;
+    height: 100%;
+    position: relative;
+    text-align: center;
+}
+
+#bottom-positioner {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    display: inline-block;
+    bottom: 100px;
+    width: 40px;
+    height: 40px;
+}
+
+#bottom-positioner:hover {
+    width: 180px;
+    height: 310px;
+    bottom: 0px;
+}
+
+#button {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+}
+
+#bottom-positioner:hover #button {
+    left: 70px;
+    bottom: 100px;
+}
+
+#info-bar {
+    background-color: #666666;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    position: absolute;
+    left: -50px;
+    bottom: -35px;
+    opacity: 0;
+    transform: scale(0);
+    transition: all .5s ease-in-out;
+}
+
+#bottom-positioner:hover #info-bar {
+    bottom: 60px;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.page {
+    position: absolute;
+}
+
+.page span {
+    display: inline-block;
+    margin-left: 10px;
+    color: white;
+    transition: ease-out 0.5s;
+    opacity: 1;
+}
+
+.user {
+    left: 40px;
+    top: 20px;
+}
+
+.user span {
+    vertical-align: top;
+}
+
+.comment {
+    top: 50px;
+    left: 34px;
+}
+
+.comment span {
+    font-size: 30px;
+}
+
+.mine {
+    position: absolute;
+    display: inline-block;
+}
+
+.mine span {
+    position: absolute;
+    display: inline-block;
+    margin-left: 5px;
+    color: #079E6E;
+    font-weight: bold;
+    bottom: 7px;
+}
+
+.posted {
+    top: 95px;
+    left: 26px;
+}
+
+.posted img {
+    padding: 1px;
+}
+
+.like {
+    top: 95px;
+    left: 74px;
+}
+
+.button {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding: 5px;
+    left: 2.5px;
+    bottom: 2.5px;
+    opacity: 0;
+    transition: ease-out 0.5s;
+    background-size: 50%;
+    background-color: #666666;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+#bottom-positioner:hover .button {
+    opacity: 1;
+}
+
+.mask {
+    background-image: url(assets/images/nomask.png);
+}
+
+#bottom-positioner:hover .mask {
+    left: -57px;
+    bottom: 40px;
+}
+
+.history {
+    background-image: url(assets/images/history.png);
+}
+
+#bottom-positioner:hover .history {
+    left: -68px;
+    bottom: 0px;
+}
+
+.message {
+    background-image: url(assets/images/message.png);
+}
+
+#bottom-positioner:hover .message {
+    left: -57px;
+    bottom: -41px;
+}
+
+.setting {
+    background-image: url(assets/images/setting.png);
+}
+
+#bottom-positioner:hover .setting {
+    left: -20px;
+    bottom: -65px;
+}
+
+.sign {
+    background-image: url(assets/images/signin.png);
+}
+
+#bottom-positioner:hover .sign {
+    left: 25px;
+    bottom: -62px;
+}
+
+.unread {
+    display: inline-block;
+    position: absolute;
+    left: 24px;
+    bottom: 20px;
+    background-color: #F44336;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 18px;
+    transition: ease-out 0.5s;
+    color: white;
+}
+
+.apb {
+    position: absolute;
+    background-image: url(assets/images/atplus_white.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-color: #7171C6;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: transform 0.5s ease-in-out;
+}
+
+#bottom-positioner:hover .apb {
+    background-image: url(assets/images/atplus_green.png);
+    background-size: 66%;
+    background-color: rgba(48, 63, 159, 1);
+    transform: scale(1.5);
+    opacity: 1;
+}

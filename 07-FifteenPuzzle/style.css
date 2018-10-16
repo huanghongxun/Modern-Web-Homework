@@ -1,0 +1,36 @@
+.container {
+    text-align: center;
+}
+
+.board {
+    position: relative;
+
+    width: 400px;
+    height: 400px;
+    
+    margin: 0 auto;
+}
+
+.component {
+    position: absolute;
+    overflow: hidden;
+    text-align: left;
+
+    border: 1px gray solid;
+
+    width: 98px;
+    height: 98px;
+
+    transition: all 0.25s ease-in-out;
+}
+
+.component img {
+    position: absolute;
+}
+
+button {
+
+}
+
+.center {
+}
