@@ -7,7 +7,7 @@
 
 let evaluated = false;
 
-function append(str) {
+function appendToScreen(str) {
     if (evaluated) {
         clearScreen();
         evaluated = false;

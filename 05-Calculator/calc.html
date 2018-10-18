@@ -28,33 +28,33 @@
                 <input type="text" class="screen text-right" id="calc" readonly />
             </div>
             <div class="row">
-                <button class="button operator" onclick="append('(')">(</button>
-                <button class="button operator" onclick="append(')')">)</button>
+                <button class="button operator" onclick="appendToScreen('(')">(</button>
+                <button class="button operator" onclick="appendToScreen(')')">)</button>
                 <button class="button operator" onclick="backspace()">←</button>
-                <button class="button special-operator" onclick="append('/')">÷</button>
+                <button class="button special-operator" onclick="appendToScreen('/')">÷</button>
             </div>
             <div class="row">
-                <button class="button digit" onclick="append('7')">7</button>
-                <button class="button digit" onclick="append('8')">8</button>
-                <button class="button digit" onclick="append('9')">9</button>
-                <button class="button special-operator" onclick="append('*')">×</button>
+                <button class="button digit" onclick="appendToScreen('7')">7</button>
+                <button class="button digit" onclick="appendToScreen('8')">8</button>
+                <button class="button digit" onclick="appendToScreen('9')">9</button>
+                <button class="button special-operator" onclick="appendToScreen('*')">×</button>
             </div>
             <div class="row">
-                <button class="button digit" onclick="append('4')">4</button>
-                <button class="button digit" onclick="append('5')">5</button>
-                <button class="button digit" onclick="append('6')">6</button>
-                <button class="button special-operator" onclick="append('-')">－</button>
+                <button class="button digit" onclick="appendToScreen('4')">4</button>
+                <button class="button digit" onclick="appendToScreen('5')">5</button>
+                <button class="button digit" onclick="appendToScreen('6')">6</button>
+                <button class="button special-operator" onclick="appendToScreen('-')">－</button>
             </div>
             <div class="row">
-                <button class="button digit" onclick="append('1')">1</button>
-                <button class="button digit" onclick="append('2')">2</button>
-                <button class="button digit" onclick="append('3')">3</button>
-                <button class="button special-operator" onclick="append('+')">＋</button>
+                <button class="button digit" onclick="appendToScreen('1')">1</button>
+                <button class="button digit" onclick="appendToScreen('2')">2</button>
+                <button class="button digit" onclick="appendToScreen('3')">3</button>
+                <button class="button special-operator" onclick="appendToScreen('+')">＋</button>
             </div>
             <div class="row">
                 <button class="button operator" onclick="clearScreen()">CE</button>
-                <button class="button digit" onclick="append('0')">0</button>
-                <button class="button operator" onclick="append('.')">.</button>
+                <button class="button digit" onclick="appendToScreen('0')">0</button>
+                <button class="button operator" onclick="appendToScreen('.')">.</button>
                 <button class="button special-operator" onclick="calculate()">=</button>
             </div>
         </div>
