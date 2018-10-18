@@ -5,12 +5,13 @@ class Game {
         $(container).addClass('board');
 
         $(this.container).empty();
-        this.empty = { x: 3, y: 3 };
 
         for (let i = 0; i < 4; ++i)
             for (let j = 0; j < 4; ++j)
                 if (i + j < 6)
                     this.buildChild(this.image, i, j, i, j);
+                else
+                    this.empty = { x: i, y: j };
     }
 
     restart() {
@@ -23,6 +24,8 @@ class Game {
             for (let j = 0; j < 4; ++j)
                 if (i + j < 6)
                     this.buildChild(this.image, Math.floor(now[i * 4 + j] / 4), now[i * 4 + j] % 4, i, j);
+                else
+                    this.empty = { x: Math.floor(now[i * 4 + j] / 4), y: now[i * 4 + j] % 4 };
     }
 
     buildChild(image, x, y, actX, actY) {
