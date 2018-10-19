@@ -1,16 +1,15 @@
 const users = require('../users');
-const url = require('url');
+const middlewares = require('../middlewares');
 const render = require('../template');
 
 module.exports = { // url: /
-    path: '/',
-    method: 'GET',
+    pathname: '/user/profile',
+    method: 'get',
+    middleware: [middlewares.requiresLogin],
     handlers: function(req, res) {
-        const { username } = req.query;
+        const { username } = req.params;
         if (!username) {
-            res.statusCode = 400;
-            res.end('Username cannot be empty');
-            return;
+            return res.redirect(301, '/');
         }
 
         let userinfo = users.query(username);
@@ -18,10 +17,7 @@ module.exports = { // url: /
         // if the user does not exist
         // navigate to register page
         if (!userinfo) {
-            res.statusCode = 301;
-            res.setHeader('Location', '/register.html');
-            res.end('');
-            return;
+            return res.redirect(301, '/user/register');
         }
 
         render('./template/userinfo.html', userinfo, function(err, html) {

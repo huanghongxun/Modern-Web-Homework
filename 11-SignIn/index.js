@@ -1,30 +1,32 @@
-const http = require('http');
 const express = require('express');
+const path = require('path');
 const server = require('./server');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const SERVER_PORT = 8000;
 
-app.use(express.static(path.resolve(__dirname, "../dist")));
-app.use(express.static(path.resolve(__dirname, "../assets")));
+mongoose.connect('mongodb://localhost/auth');
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error '));
+db.once('open', function() {});
+
+const app = express();
+app.use(express.static(path.resolve(__dirname, "./dist")));
+app.use(express.static(path.resolve(__dirname, "./assets")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-const addingSep = str => str.indexOf("://") != -1 || str.startsWith("/") ? str : "/" + str;
-
-Object.keys(json)
-    .filter(key => !key.endsWith("map"))
-    .filter(key => !key.startsWith("app"))
-    .forEach(key => js.push(addingSep(json[key])));
-
-Object.keys(json)
-    .filter(key => !key.endsWith("map"))
-    .filter(key => key.startsWith("app"))
-    .forEach(key => js.push(addingSep(json[key])));
+app.use(session({
+    secret: '17343050',
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({mongooseConnection: db})
+}));
 
 Object.keys(server)
     .map(key => server[key])
-    .forEach(router => app[router.method](`${router.path}`, router.handlers));
+    .forEach(router => app[router.method](router.pathname, router.handlers));
 
-http.createServer(function(req, res) {
-    callRouter(req, res, 0);
-}).listen(SERVER_PORT);
+app.listen(SERVER_PORT);

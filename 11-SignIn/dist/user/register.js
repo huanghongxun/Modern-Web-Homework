@@ -1,8 +1,7 @@
 function check(input) {
     if (input.value != document.getElementById('txtPassword').value) {
-        input.setCustomValidity('Password Must be Matching.');
+        input.setCustomValidity('password not matched');
     } else {
-        // input is valid -- reset the error message
         input.setCustomValidity('');
     }
 }
@@ -44,7 +43,7 @@ $(document).ready(function () {
         }).then(res => {
             status = res.status;
             if (status == 200) {
-                window.location.href = "/?username=" + query.username;
+                window.location.href = "/user/profile";
             } else {
                 return res.json();
             }

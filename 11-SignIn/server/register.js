@@ -1,9 +1,9 @@
 const users = require('../users');
 
 module.exports = {
-    path: '/api/register',
-    method: 'PUT',
-    handlers: function (req, res) {
+    pathname: '/api/register',
+    method: 'put',
+    handlers: function (req, res, next) {
         const query = req.body;
 
         if (!query) {
@@ -12,8 +12,8 @@ module.exports = {
             return;
         }
 
-        const { username, stuId, tel, email } = query;
-        if (!username || !stuId || !tel || !email) {
+        const { username, password, stuId, tel, email } = query;
+        if (!username || !password || !stuId || !tel || !email) {
             res.status(400);
             res.send({ msg: 'query missing field' });
             return;
@@ -49,19 +49,10 @@ module.exports = {
             res.send({ type: 'malformed', field: 'email' });
             return;
         }
-        try {
-            users.create({ username, stuId, tel, email });
-            res.status(200);
-            res.send({});
-        } catch (err) {
-            if (typeof err == 'string') {
-                res.status(409);
-                res.send({ type: 'conflict', field: err });
-                return;
-            }
 
-            res.status(500);
-            res.send({ msg: 'error' });
-        }
+        users.create({ username, password, stuId, tel, email }, function(err, user) {
+            if (err) return next(err);
+            else return res.end('');
+        });
     }
 };

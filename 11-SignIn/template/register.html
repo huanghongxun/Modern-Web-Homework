@@ -4,14 +4,15 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>注册</title>
+    <title>Sign In - 注册</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.min.js"></script>
 
     <link href="/icon.css" rel="stylesheet">
     <link rel="stylesheet" href="/material.indigo-pink.min.css">
-    <link rel="stylesheet" type="text/css" href="/register.css" />
-    <script type="text/javascript" src="/register.js"></script>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <script type="text/javascript" src="/user/register.js"></script>
 </head>
 
 <body>
@@ -24,14 +25,16 @@
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation -->
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link" href="/register.html">注册</a>
+                    <a class="mdl-navigation__link" href="/user/register">注册</a>
+                    <a class="mdl-navigation__link" href="/user/login">登录</a>
                 </nav>
             </div>
         </header>
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">Sign In</span>
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="/register.html">注册</a>
+                <a class="mdl-navigation__link" href="/user/register">注册</a>
+                <a class="mdl-navigation__link" href="/user/login">登录</a>
             </nav>
         </div>
         <main class="mdl-layout__content">
@@ -51,12 +54,12 @@
                                             <span class="mdl-textfield__error">6~18位英文字母、数字或下划线，必须以英文字母开头</span>
                                         </div>
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                            <input class="mdl-textfield__input" type="text" id="txtPassword" pattern="^[a-zA-Z0-9_\-]{6,12}$">
+                                            <input class="mdl-textfield__input" type="password" id="txtPassword" pattern="^[a-zA-Z0-9_\-]{6,12}$">
                                             <label class="mdl-textfield__label" for="txtPassword">密码</label>
                                             <span class="mdl-textfield__error">6~12位数字、大小写字母、中划线、下划线</span>
                                         </div>
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                            <input class="mdl-textfield__input" type="text" id="txtConfirmPassword" oninput="check(this)">
+                                            <input class="mdl-textfield__input" type="password" id="txtConfirmPassword" oninput="check(this)">
                                             <label class="mdl-textfield__label" for="txtConfirmPassword">确认密码</label>
                                             <span class="mdl-textfield__error">密码不匹配</span>
                                         </div>

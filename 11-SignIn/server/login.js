@@ -2,8 +2,8 @@ const url = require('url');
 const users = require('../users');
 
 module.exports = {
-    path: '/api/login',
-    method: 'PUT',
+    pathname: '/api/login',
+    method: 'post',
     handlers: function (req, res) {
         const query = req.body;
 
@@ -20,19 +20,16 @@ module.exports = {
             return;
         }
 
-        try {
-            users.create({ username, stuId, tel, email });
-            res.status(200);
-            res.send({});
-        } catch (err) {
-            if (typeof err == 'string') {
-                res.status(409);
-                res.send({ type: 'conflict', field: err });
-                return;
+        users.authenticate(username, password, function(err, user) {
+            if (err) return next(err);
+            else if (user === undefined) {
+                res.send({ type: 'not_found' });
+            } else if (user == null) {
+                res.send({ type: 'wrong_password' });
+            } else {
+                req.session.userId = user._id;
+                res.send({ type: 'success' });
             }
-
-            res.status(500);
-            res.send({ msg: 'error' });
-        }
+        });
     }
 };

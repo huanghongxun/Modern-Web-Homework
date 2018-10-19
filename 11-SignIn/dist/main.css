@@ -6,6 +6,10 @@ html, body {
     height: 100%;
 }
 
+.right-spacing {
+    margin-right: 8px;
+}
+
 .text-right {
     text-align: right;
 }
