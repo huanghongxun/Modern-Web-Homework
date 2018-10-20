@@ -14,6 +14,7 @@ db.on('error', console.error.bind(console, 'connection error '));
 db.once('open', function() {});
 
 const app = express();
+app.set('view engine', 'ejs');
 app.use(express.static(path.resolve(__dirname, "./dist")));
 app.use(express.static(path.resolve(__dirname, "./assets")));
 app.use(bodyParser.json());
@@ -27,6 +28,11 @@ app.use(session({
 
 Object.keys(server)
     .map(key => server[key])
-    .forEach(router => app[router.method](router.pathname, router.handlers));
+    .forEach(router => {
+        if (router.middleware)
+            app[router.method](router.pathname, router.middleware, router.handlers);
+        else
+            app[router.method](router.pathname, router.handlers);
+    });
 
 app.listen(SERVER_PORT);

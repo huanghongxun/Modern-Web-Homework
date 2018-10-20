@@ -1,0 +1,32 @@
+<%- include('header.ejs', { locals: {user: locals.user, title: 'Sign In - ' + locals.user.username}}); %>
+            <div class="mdl-layout__tab-panel is-active">
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-demo-card">
+                        <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                            <h4 class="mdl-cell mdl-cell--12-col">用户详情</h4>
+                            <% if (locals.nav_wrong_user) { %>
+                                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                                    <h5 style="color: red;">只能够访问自己的数据</h5>
+                                </div>
+                            <% } %>
+                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                                <h5>用户名</h5>
+                                <%=locals.user.username%>
+                            </div>
+                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                                <h5>学号</h5>
+                                <%=locals.user.stuId%>
+                            </div>
+                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                                <h5>电话</h5>
+                                <%=locals.user.tel%>
+                            </div>
+                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                                <h5>邮箱</h5>
+                                <%=locals.user.email%>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+<%- include('footer.ejs', {}) %>

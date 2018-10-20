@@ -8,16 +8,12 @@ module.exports = {
         const query = req.body;
 
         if (!query) {
-            res.status(400);
-            res.send({ msg: 'query cannot be empty' });
-            return;
+            return res.status(400).send({ msg: 'query cannot be empty' });
         }
 
         const { username, password } = query;
         if (!username || !password) {
-            res.status(400);
-            res.send({ msg: 'query missing field' });
-            return;
+            return res.status(400).send({ msg: 'query missing field' });
         }
 
         users.authenticate(username, password, function(err, user) {

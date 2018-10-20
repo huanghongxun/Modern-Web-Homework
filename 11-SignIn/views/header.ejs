@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><%=locals.title||'Sign In'%></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/material.indigo-pink.min.css">
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <script src="/common.js"></script>
+</head>
+
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base"></body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Sign In</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <% if (locals.user) { %>
+                        <a class="mdl-navigation__link" href="/user/profile"><%=locals.user.username%></a>
+                        <a class="mdl-navigation__link" href="/user/logout">登出</a>
+                    <% } else { %>
+                        <a class="mdl-navigation__link" href="/user/register">注册</a>
+                        <a class="mdl-navigation__link" href="/user/login">登录</a>
+                    <% } %>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title"><%= locals.user ? locals.user.username : 'Sign In' %></span>
+            <nav class="mdl-navigation">
+                <% if (locals.user) { %>
+                    <a class="mdl-navigation__link" href="/user/profile">个人信息</a>
+                    <a class="mdl-navigation__link" href="/user/logout">登出</a>
+                <% } else { %>
+                    <a class="mdl-navigation__link" href="/user/register">注册</a>
+                    <a class="mdl-navigation__link" href="/user/login">登录</a>
+                <% } %>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
