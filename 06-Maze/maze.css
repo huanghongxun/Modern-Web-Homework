@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Century Gothic", sans-serif;
+}
+
+.container {
+    margin-top: 80px;
+}
+
+header {
+    text-align: center;
+    font-size: 25px;
+}
+
+header h1 {
+    font-size: 30px;
+    font-weight: normal;
+}
+
+#info {
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+#info[display] {
+    opacity: 1;
+}
+
+.wall {
+    background-color: #EEEEEE;
+}
+
+.wall[hover] {
+    background-color: red;
+}
+
+main {
+    width: 500px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#map[start] {
+    cursor: pointer;
+}
+
+#map .top {
+    height: 50px;
+    border: 1px solid black;
+}
+
+#map .left, .right {
+    margin-top: -1px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    border-top: none;
+}
+
+#map .left {
+    float: left;
+}
+
+#map .right {
+    float: right;
+}
+
+#start {
+    clear: left;
+    float: left;
+    background-color: rgb(132, 255, 130);
+}
+
+#end {
+    clear: right;
+    float: right;
+    background-color: rgb(132, 133, 255);
+    cursor: default;
+}
+
+#map .destination {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 3.5px;
+}
+
+#map .middle {
+    position: relative;
+    top: 1px;
+    width: 100px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 48px;
+    border: 1px solid black;
+    border-bottom: none;
+}
+
+#map .bottom {
+    height: 50px;
+    border: 1px solid black;
+}
+
+footer {
+    width: 600px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer .block {
+    width: 100px;
+    height: 25px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #EEEEEE;
+}

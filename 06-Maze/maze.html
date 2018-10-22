@@ -1,0 +1,46 @@
+<!--
+    Stu. Name: Yuhui Huang
+    Stu. ID: 17343050
+    Uni.: Sun Yat-sen University
+    Class: Software Engineering Class 2
+-->
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Maze</title>
+    <link rel="stylesheet" href="maze.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+    <script src="maze.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>The Amazing Mouse Maze!</h1>
+            <p>Move your mouse over the "S" to begin.</p>
+            <p id="info">&nbsp;</p>
+        </header>
+
+        <main id="map" class="map">
+            <div class="wall top"></div>
+            <div class="wall left"></div>
+            <div class="wall right"></div>
+            <div id="start" class="destination">S</div>
+            <div id="end" class="destination">E</div>
+            <div class="wall middle"></div>
+            <div class="wall bottom"></div>
+        </main>
+
+        <footer>
+            <p>The object of this game is to guide the mouse cursor through the start area and get to the end area. Be sure to avoid the walls:</p>
+            <div class="block"></div>
+            <p>Good luck!</p>
+        </footer>
+    </div>
+</body>
+
+</html>
