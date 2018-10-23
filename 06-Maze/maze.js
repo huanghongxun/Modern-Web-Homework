@@ -23,7 +23,7 @@ $(document).ready(function () {
             if (inmap) {
                 $('#info').text('You Win');
             } else {
-                $('#info').text("Don't cheat, you should start from the 'S' and move to the 'E' inmap the maze!");
+                $('#info').text("Don't cheat, you should start from the 'S' and move to the 'E' inside the maze!");
             }
             $('#info').attr('display', '');
             $('#map').removeAttr('start');
