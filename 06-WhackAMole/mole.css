@@ -51,10 +51,13 @@ body:active {
     left: 30px;
 }
 
-.score {
-    background: url('./image/score.png');
+.board {
+    text-align: center;
+}
+
+.board > div {
     background-size: 100% 100%;
-    display: block;
+    display: inline-block;
     width: 200px;
     height: 70px;
     font-size: 20px;
@@ -62,9 +65,85 @@ body:active {
     text-align: center;
     line-height: 65px;
     color: #924100;
-    margin: 0 auto;
+    margin: 0 20px;
 }
 
-.score div {
+.scoreboard {
+    background: url('./image/score.png');
+}
+
+.scoreboard div {
     margin-left: 60px;
+}
+
+.timeboard {
+    background: url('./image/time.png');
+}
+
+.timeboard div {
+    margin-left: 60px;
+}
+
+#restart {
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    height: 54px;
+    background-image: url('./image/restart.png');
+}
+
+#restart:active {
+    background-image: url('./image/restart_pressed.png');
+}
+
+#play {
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    height: 54px;
+    background-image: url('./image/play.png');
+}
+
+#play:active {
+    background-image: url('./image/play_pressed.png');
+}
+
+#play[gaming] {
+    background-image: url('./image/home.png');
+}
+
+#play[gaming]:active {
+    background-image: url('./image/home_pressed.png');
+}
+
+#play img {
+    opacity: 0;
+}
+
+#summaryDialog {
+    position: fixed;
+    text-align: center;
+    border: none;
+    padding: 0;
+    background: none;
+    background-image: url('./image/summary.png');
+    width: 515px;
+    height: 527px;
+    left: 50%;
+    top: 50%;
+    margin-left: -257px;
+    margin-top: -263px;
+    z-index: 20;
+}
+
+#summaryDialog > div {
+    display: inline-block;
+    padding-top: 150px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 65px;
+    color: #924100;
 }

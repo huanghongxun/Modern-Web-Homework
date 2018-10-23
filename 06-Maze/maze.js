@@ -25,13 +25,15 @@ $(document).ready(function () {
             } else {
                 $('#info').text("Don't cheat, you should start from the 'S' and move to the 'E' inside the maze!");
             }
-            $('#info').attr('display', '');
-            $('#map').removeAttr('start');
+        } else {
+            $('#info').text("Don't cheat, you should start from the 'S' and move to the 'E' inside the maze!");
         }
+        $('#info').attr('display', '');
+        $('#map').removeAttr('start');
         ingame = false;
     });
 
-    
+
     $('.wall').mouseover(function () {
         if (ingame) {
             ingame = false;
