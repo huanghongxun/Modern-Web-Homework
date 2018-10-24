@@ -96,6 +96,7 @@ main {
     vertical-align: center;
     font-size: 30px;
     font-weight: bold;
+    font-family: 'Arial', sans-serif;
 }
 
 #map .middle {
