@@ -30,10 +30,6 @@ header h1 {
     background-color: #EEEEEE;
 }
 
-.wall[hover] {
-    background-color: red;
-}
-
 main {
     margin-left: auto;
     margin-right: auto;
@@ -46,7 +42,10 @@ main {
 }
 
 #map[start] {
-    cursor: pointer;
+}
+
+#map[fail] .wall {
+    background-color: red;
 }
 
 #map .top {
@@ -88,11 +87,13 @@ main {
 
 #map .destination {
     position: absolute;
-    width: 38px;
-    height: 38px;
-    top: 205px;
+    width: 46px;
+    height: 46px;
+    top: 201px;
     border: 1px solid black;
     text-align: center;
+    line-height: 46px;
+    vertical-align: center;
     font-size: 30px;
     font-weight: bold;
 }

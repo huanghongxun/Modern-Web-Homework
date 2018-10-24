@@ -63,6 +63,8 @@ $(document).ready(function() {
     resetGame();
 
     $('.hole').click(function() {
+        if (!ingame) return;
+
         if (score > 0) --score;
         $('#count').text(score);
     });

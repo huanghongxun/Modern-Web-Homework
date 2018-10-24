@@ -1,5 +1,5 @@
 const reset = function () {
-    $('.wall').removeAttr('hover');
+    $('#map').removeAttr('fail');
 }
 
 $(document).ready(function () {
@@ -37,9 +37,9 @@ $(document).ready(function () {
     $('.wall').mouseover(function () {
         if (ingame) {
             ingame = false;
-            $(this).attr('hover', '');
             $('#info').attr('display', '');
             $('#map').removeAttr('start');
+            $('#map').attr('fail', '');
             $('#info').text('You Lose');
         }
     });
