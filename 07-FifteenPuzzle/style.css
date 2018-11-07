@@ -4,33 +4,33 @@
 
 .board {
     position: relative;
-
     width: 400px;
     height: 400px;
-    
     margin: 0 auto;
+    background: gray;
 }
 
 .component {
+    background: white;
     position: absolute;
     overflow: hidden;
     text-align: left;
-
     border: 1px gray solid;
-
     width: 98px;
     height: 98px;
-
-    transition: all 0.25s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 .component img {
     position: absolute;
 }
 
-button {
-
+.component:hover {
+    transform: scale(1.1, 1.1);
+    box-shadow: 0px 0px 16px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 10;
 }
 
-.center {
-}
+button {}
+
+.center {}

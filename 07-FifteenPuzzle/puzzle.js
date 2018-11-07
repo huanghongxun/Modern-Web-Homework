@@ -1,3 +1,13 @@
+function offset({ x, y }, d) {
+    switch (d) {
+        case 0: return { x: x - 1, y };
+        case 1: return { x, y: y + 1 };
+        case 2: return { x: x + 1, y };
+        case 3: return { x, y: y - 1 };
+        default: return undefined;
+    }
+}
+
 class Game {
     constructor(container, image) {
         this.image = image;
@@ -18,14 +28,29 @@ class Game {
         $(this.container).empty();
         this.empty = { x: 3, y: 3 };
 
-        let now = _.shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
+        let now = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+        let ops = [];
+        for (let t = 0; t < 50; ++t) {
+            let X = this.empty;
+            let x = X.x * 4 + X.y;
+            let d = Math.floor(Math.random() * 4);
+            let Y = offset(X, d);
+            if (Y.x < 0 || Y.x >= 4 || Y.y < 0 || Y.y >= 4) Y = offset(X, d ^ 2);
+            let y = Y.x * 4 + Y.y;
+            let t = now[x]; now[x] = now[y]; now[y] = t;
+
+            ops.push({ from: X, to: Y });
+            this.empty = Y;
+        }
+
+        for (let t = 49; t >= 0; --t) {
+            console.log("Swap ", ops[t].from, ops[t].to);
+        }
 
         for (let i = 0; i < 4; ++i)
             for (let j = 0; j < 4; ++j)
-                if (i + j < 6)
-                    this.buildChild(this.image, Math.floor(now[i * 4 + j] / 4), now[i * 4 + j] % 4, i, j);
-                else
-                    this.empty = { x: Math.floor(now[i * 4 + j] / 4), y: now[i * 4 + j] % 4 };
+                if (i != this.empty.x || j != this.empty.y)
+                    this.buildChild(this.image, i, j, Math.floor(now[i * 4 + j] / 4), now[i * 4 + j] % 4);
     }
 
     buildChild(image, x, y, actX, actY) {
