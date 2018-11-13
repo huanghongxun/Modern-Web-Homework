@@ -21,8 +21,12 @@
     transition: all 0.1s ease-in-out;
 }
 
-.component img {
+.component .img {
     position: absolute;
+    height: 398px;
+    width: 398px;
+    background-size: 100%;
+    transition: all 0.2s ease-in-out;
 }
 
 .component:hover {
@@ -31,6 +35,29 @@
     z-index: 10;
 }
 
-button {}
+button {
+    margin-left: 8px;
+    margin-right: 8px;
+
+    padding: 0 8px;
+    display: inline-block;
+    border-radius: 4px;
+    text-align: center;
+    color: #ca0c16 !important;
+    border: 1px solid #ca0c16 !important;
+    transition: background-color .1s ease-in-out;
+
+    cursor: pointer;
+    line-height: 28px;
+    background-color: white;
+}
+
+button:active, button:hover {
+    outline: 0;
+}
+
+button:hover {
+    background-color: #fde3e4;
+}
 
 .center {}

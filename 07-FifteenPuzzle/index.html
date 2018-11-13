@@ -14,12 +14,13 @@
     <div class="container">
         <h1>拼图游戏</h1>
         <div id="board"></div>
-        <div>你可以在控制台中查看游戏攻略，点击重新开始打乱地图</div>
+        <p>你可以在控制台中查看游戏攻略，点击重新开始打乱地图</p>
         <button class="btn center" onclick="game.restart();">重新开始</button>
+        <button class="btn center" onclick="game.reset(); game.switchImage();">更换图片</button>
     </div>
 
     <script type="text/javascript">
-        let game = new Game(board, 'panda.jpg');
+        let game = new Game(board, ['panda.jpg', 'mikoto.jpg', 'kuloko.jpg', 'frenda.jpg']);
     </script>
 </body>
 
