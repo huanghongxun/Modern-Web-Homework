@@ -12,6 +12,7 @@ class Game {
     constructor(container, image) {
         this.image = image;
         this.container = container;
+        this.running = false;
         $(container).addClass('board');
 
         $(this.container).empty();
@@ -25,12 +26,13 @@ class Game {
     }
 
     restart() {
-        $(this.container).empty();
+        this.running = true;
         this.empty = { x: 3, y: 3 };
 
         let now = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
         let ops = [];
-        for (let t = 0; t < 50; ++t) {
+        let time = 1;
+        for (let t = 0; t < time; ++t) {
             let X = this.empty;
             let x = X.x * 4 + X.y;
             let d = Math.floor(Math.random() * 4);
@@ -43,14 +45,22 @@ class Game {
             this.empty = Y;
         }
 
-        for (let t = 49; t >= 0; --t) {
+        console.log("Start");
+        for (let t = time - 1; t >= 0; --t) {
             console.log("Swap ", ops[t].from, ops[t].to);
         }
 
+        // i and j are current display coord
         for (let i = 0; i < 4; ++i)
             for (let j = 0; j < 4; ++j)
                 if (i != this.empty.x || j != this.empty.y)
-                    this.buildChild(this.image, i, j, Math.floor(now[i * 4 + j] / 4), now[i * 4 + j] % 4);
+                    this.moveChild(i, j, Math.floor(now[i * 4 + j] / 4), now[i * 4 + j] % 4);
+    }
+
+    moveChild(x, y, actX, actY) {
+        $(this.container).find(`div[ori-x='${actX}'][ori-y='${actY}']`)
+            .attr({ 'game-x': x, 'game-y': y })
+            .css({ left: y * 100 + 'px', top: x * 100 + 'px' });
     }
 
     buildChild(image, x, y, actX, actY) {
@@ -59,11 +69,14 @@ class Game {
             .attr('src', image);
         let div = $('<div></div>')
             .addClass('component')
+            .attr({ 'ori-x': actX, 'ori-y': actY })
             .attr({ 'game-x': x, 'game-y': y })
             .css({ left: y * 100 + 'px', top: x * 100 + 'px' })
             .append(img);
 
         div.click(() => {
+            if (!this.running) return;
+
             const location = { x: parseInt(div.attr('game-x')), y: parseInt(div.attr('game-y')) };
 
             if (Math.abs(this.empty.x - location.x) + Math.abs(this.empty.y - location.y) != 1)
