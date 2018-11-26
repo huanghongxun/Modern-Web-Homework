@@ -2,3 +2,6 @@
 *.rar
 
 node_modules/
+mongodb/
+
+package-lock.json

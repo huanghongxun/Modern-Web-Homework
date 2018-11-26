@@ -1,7 +1,7 @@
 {
   "name": "sign-up",
   "version": "1.0.0",
-  "description": "Homework 9. Sign Up",
+  "description": "Homework 11. Sign In",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
@@ -18,19 +18,18 @@
   },
   "homepage": "https://github.com/huanghongxun/Modern-Web-HomeWork#readme",
   "devDependencies": {
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.6"
   },
   "dependencies": {
-    "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
-    "connect-mongo": "^2.0.1",
+    "connect-mongo": "^2.0.2",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "jquery": "^3.3.1",
     "lodash": "^4.17.11",
-    "mongodb": "^3.1.8",
-    "mongoose": "^5.3.4"
+    "mongodb": "^3.1.10",
+    "mongoose": "^5.3.13"
   }
 }
