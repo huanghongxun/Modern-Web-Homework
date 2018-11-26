@@ -45,7 +45,7 @@ class Game {
 
         let now = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
         let ops = [];
-        let time = 50;
+        let time = 500;
         for (let t = 0; t < time; ++t) {
             let X = this.empty;
             let x = X.x * 4 + X.y;
