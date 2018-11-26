@@ -16,28 +16,28 @@ $(document).ready(function () {
         let flag = true;
 
         if (!usernameRegex.test(query.username)) {
-            txtUsername.setCustomValidity('用户名需要');
+            txtUsername.setCustomValidity('6~18位英文字母、数字或下划线，必须以英文字母开头');
             flag = false;
         } else {
             txtUsername.setCustomValidity('');
         }
 
         if (!stuIdRegex.test(query.stuId)) {
-            txtStudentID.setCustomValidity('invalid');
+            txtStudentID.setCustomValidity('8位数字，不能以0开头');
             flag = false;
         } else {
             txtStudentID.setCustomValidity('');
         }
 
         if (!telRegex.test(query.tel)) {
-            txtPhone.setCustomValidity('invalid');
+            txtPhone.setCustomValidity('11位数字，不能以0开头');
             flag = false;
         } else {
             txtPhone.setCustomValidity('');
         }
 
         if (!emailRegex.test(query.email)) {
-            txtEmail.setCustomValidity('invalid');
+            txtEmail.setCustomValidity('不符合邮箱格式');
             flag = false;
         } else {
             txtEmail.setCustomValidity('');

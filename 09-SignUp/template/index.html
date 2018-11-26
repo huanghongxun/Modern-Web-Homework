@@ -4,14 +4,14 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>注册</title>
+    <title>主页</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
 
     <link href="/icon.css" rel="stylesheet">
     <link rel="stylesheet" href="/material.indigo-pink.min.css">
     <link rel="stylesheet" type="text/css" href="/register.css" />
-    <script type="text/javascript" src="/register.js"></script>
+    <script src="/index.js"></script>
 </head>
 
 <body>
@@ -42,39 +42,23 @@
                     <div class="middle">
                         <div class="inner">
                             <div class="mdl-card mdl-shadow--2dp">
-                                <form onsubmit="return false;">
-                                    <div class="mdl-card__title">
-                                        <h2 class="mdl-card__title-text">注册</h2>
-                                    </div>
-                                    <div class="mdl-card__supporting-text">
+                                <div class="mdl-card__title">
+                                    <h2 class="mdl-card__title-text">主页</h2>
+                                </div>
+                                <div class="mdl-card__supporting-text">
+                                    <h5>点击右上角（或者左上角汉堡按钮点击后弹出的抽屉中）的注册，或者在此查看用户详情。<br><br>如果找不到用户则直接跳转注册页面</h5>
+
+                                    <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                             <input class="mdl-textfield__input" type="text" id="txtUsername" pattern="^[a-zA-Z]\w{5,17}$">
                                             <label class="mdl-textfield__label" for="txtUsername">用户名</label>
                                             <span class="mdl-textfield__error">6~18位英文字母、数字或下划线，必须以英文字母开头</span>
                                         </div>
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                            <input class="mdl-textfield__input" type="text" id="txtStudentID" pattern="^[1-9]\d{7}$">
-                                            <label class="mdl-textfield__label" for="txtStudentID">学号</label>
-                                            <span class="mdl-textfield__error">8位数字，不能以0开头</span>
-                                        </div>
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                            <input class="mdl-textfield__input" type="text" id="txtPhone" pattern="^[1-9]\d{10}$">
-                                            <label class="mdl-textfield__label" for="txtPhone">电话</label>
-                                            <span class="mdl-textfield__error">11位数字，不能以0开头</span>
-                                        </div>
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                            <input class="mdl-textfield__input" type="text" id="txtEmail" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$">
-                                            <label class="mdl-textfield__label" for="txtEmail">邮箱</label>
-                                            <span class="mdl-textfield__error">不符合邮箱格式</span>
-                                        </div>
                                     </div>
-                                    <div class="mdl-card__actions mdl-card--border text-right">
-                                        <button type="reset" class="mdl-button mdl-js-button mdl-js-ripple-effect">重置</button>
-                                        <button type="submit" id="btnSubmit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">注册</button>
-                                    </div>
-                                    <div class="mdl-card__menu">
-                                    </div>
-                                </form>
+                                </div>
+                                <div class="mdl-card__actions mdl-card--border text-right">
+                                        <button type="submit" id="btnSubmit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">查询</button>
+                                </div>
                             </div>
                         </div>
                     </div>

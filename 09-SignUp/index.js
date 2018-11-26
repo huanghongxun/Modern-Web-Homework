@@ -23,3 +23,7 @@ function callRouter(req, res, i) {
 http.createServer(function(req, res) {
     callRouter(req, res, 0);
 }).listen(SERVER_PORT);
+
+console.log('Please open your browser and visit http://localhost:' + SERVER_PORT);
+console.log('To register, please visit http://localhost:' + SERVER_PORT + '/register.html');
+console.log('To view user profile, please visit http://localhost:' + SERVER_PORT + '/?username=<your wanted user>');
