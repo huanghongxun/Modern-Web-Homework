@@ -1,16 +1,8 @@
 $(document).ready(function () {
-
-    $('#bottom-positioner').mouseenter(function (e) {
-        $('#control-ring li .unread').text('...');
-        $('#control-ring li').removeAttr('value')
-            .removeAttr('calculating')
-            .removeAttr('calculated');
-        $('#control-ring').removeAttr('calculating');
-        $('#info-bar').removeAttr('valid');
-        $('#sum').text('');
-    })
+    let current = 0;
 
     $('#control-ring li').click(function (e) {
+        let time = current;
         if ($(this).attr('value')) return;
         if ($('#control-ring').attr('calculating')) return;
         $(this).find('.unread').text('...');
@@ -21,6 +13,7 @@ $(document).ready(function () {
         fetch('http://localhost:3000/')
             .then(obj => obj.text())
             .then(res => {
+                if (time != current) return;
                 $(this).find('.unread').text(res);
                 $(this).attr('value', res)
                     .attr('calculated', 'calculated')
@@ -30,6 +23,17 @@ $(document).ready(function () {
                     $('#info-bar').attr('valid', 'valid');
             })
             .catch(err => console.log(err));
+    });
+
+    $('#bottom-positioner').mouseenter(function (e) {
+        current++;
+        $('#control-ring li .unread').text('...');
+        $('#control-ring li').removeAttr('value')
+            .removeAttr('calculating')
+            .removeAttr('calculated');
+        $('#control-ring').removeAttr('calculating');
+        $('#info-bar').removeAttr('valid');
+        $('#sum').text('');
     });
 
     $('#info-bar').click(function (e) {

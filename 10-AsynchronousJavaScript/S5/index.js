@@ -1,6 +1,7 @@
 $(document).ready(function () {
+    let current = 0;
 
-    liClickAsync = (li) => new Promise(function (resolve, reject) {
+    liClickAsync = (li, time, reason) => new Promise(function (resolve, reject) {
         if (li.attr('value')) return;
         if ($('#control-ring').attr('calculating')) return;
         li.find('.unread').text('...');
@@ -11,6 +12,14 @@ $(document).ready(function () {
         fetch('http://localhost:3000/')
             .then(obj => obj.text())
             .then(res => {
+                if (time != current) return;
+                if (Math.random() < 0.5) {
+                    li.removeAttr('value').removeAttr('calculating');
+                    $('#control-ring').removeAttr('calculating');
+                    reject(reason);
+                    return;
+                }
+
                 li.find('.unread').text(res);
                 li.attr('value', res)
                     .attr('calculated', 'calculated')
@@ -24,77 +33,63 @@ $(document).ready(function () {
             .catch(err => reject(err));
     });
 
-    aHandler = (currentSum, display, resolve, reject) => {
+    aHandler = (currentSum, thisTime, display, resolve, reject) => {
+        if (thisTime != current) return;
         display('这是个天大的秘密');
 
-        liClickAsync($('#control-ring li:nth-child(1)'))
-            .then(res => {
-                if (Math.random() < 0.5) resolve(currentSum + parseInt(res));
-                else throw 0;
-            })
-            .catch(err => reject({
-                message: '这不是个天大的秘密',
-                currentSum
-            }));
+        liClickAsync($('#control-ring li:nth-child(1)'), thisTime, {
+            message: '这不是个天大的秘密',
+            currentSum
+        }).then(res => resolve(currentSum + parseInt(res)))
+        .catch(err => reject(err));
     }
 
-    bHandler = (currentSum, display, resolve, reject) => {
+    bHandler = (currentSum, thisTime, display, resolve, reject) => {
+        if (thisTime != current) return;
         display('我不知道');
 
-        liClickAsync($('#control-ring li:nth-child(2)'))
-            .then(res => {
-                if (Math.random() < 0.5) resolve(currentSum + parseInt(res));
-                else throw 0;
-            })
-            .catch(err => reject({
-                message: '我知道',
-                currentSum
-            }));
+        liClickAsync($('#control-ring li:nth-child(2)'), thisTime, {
+            message: '我知道',
+            currentSum
+        }).then(res => resolve(currentSum + parseInt(res)))
+        .catch(err => reject(err));
     }
 
-    cHandler = (currentSum, display, resolve, reject) => {
+    cHandler = (currentSum, thisTime, display, resolve, reject) => {
+        if (thisTime != current) return;
         display('你不知道');
 
-        liClickAsync($('#control-ring li:nth-child(3)'))
-            .then(res => {
-                if (Math.random() < 0.5) resolve(currentSum + parseInt(res));
-                else throw 0;
-            })
-            .catch(err => reject({
-                message: '你知道',
-                currentSum
-            }));
+        liClickAsync($('#control-ring li:nth-child(3)'), thisTime, {
+            message: '你知道',
+            currentSum
+        }).then(res => resolve(currentSum + parseInt(res)))
+        .catch(err => reject(err));
     }
 
-    dHandler = (currentSum, display, resolve, reject) => {
+    dHandler = (currentSum, thisTime, display, resolve, reject) => {
+        if (thisTime != current) return;
         display('他不知道');
 
-        liClickAsync($('#control-ring li:nth-child(4)'))
-            .then(res => {
-                if (Math.random() < 0.5) resolve(currentSum + parseInt(res));
-                else throw 0;
-            })
-            .catch(err => reject({
-                message: '他知道',
-                currentSum
-            }));
+        liClickAsync($('#control-ring li:nth-child(4)'), thisTime, {
+            message: '他知道',
+            currentSum
+        }).then(res => resolve(currentSum + parseInt(res)))
+        .catch(err => reject(err));
     }
 
-    eHandler = (currentSum, display, resolve, reject) => {
+    eHandler = (currentSum, thisTime, display, resolve, reject) => {
+        if (thisTime != current) return;
         display('才怪');
 
-        liClickAsync($('#control-ring li:nth-child(5)'))
-            .then(res => {
-                if (Math.random() < 0.5) resolve(currentSum + parseInt(res));
-                else throw 0;
-            })
-            .catch(err => reject({
-                message: '就是这样',
-                currentSum
-            }));
+        liClickAsync($('#control-ring li:nth-child(5)'), thisTime, {
+            message: '就是这样',
+            currentSum
+        }).then(res => resolve(currentSum + parseInt(res)))
+        .catch(err => reject(err));
     }
 
-    bubbleHandler = (currentSum, display, resolve, reject) => {
+    bubbleHandler = (currentSum, thisTime, display, resolve, reject) => {
+        if (thisTime != current) return;
         if (Math.random() < 0.5)
             display('楼主异步调用战斗力感人，目测不超过' + currentSum);
         else
@@ -104,21 +99,23 @@ $(document).ready(function () {
             })
     };
 
-    display = (x) => {
-        $('#sum').text(x);
+    display = (msg, sum) => {
+        $('#sum').text(msg);
+        if (sum) $('#ss').text(sum.toString());
     }
 
-    robot = (callChain, current, currentSum, display) => {
-        if (current >= callChain.length) return;
+    robot = (callChain, index, currentSum, display, thisTime) => {
+        if (index >= callChain.length) return;
 
-        callChain[current](currentSum, display, function (nextSum) {
-            robot(callChain, current + 1, nextSum, display);
+        callChain[index](currentSum, thisTime, display, function (nextSum) {
+            robot(callChain, index + 1, nextSum, display, thisTime);
         }, function (err) {
+            if (thisTime != current) return;
             display(err.message, currentSum);
         });
     }
 
-    $('#bottom-positioner').mouseenter(function (e) {
+    clear = () => {
         $('#control-ring li .unread').text('...');
         $('#control-ring li').removeAttr('value')
             .removeAttr('calculating')
@@ -126,10 +123,21 @@ $(document).ready(function () {
         $('#control-ring').removeAttr('calculating');
         $('#info-bar').removeAttr('valid');
         $('#sum').text('');
+        $('#order').text('');
+        $('#ss').text('');
+    }
 
-        let handlers = [aHandler, bHandler, cHandler, dHandler, eHandler];
+    $('#bottom-positioner').mouseenter(function (e) {
+        clear();
+    });
+
+    $('.apb').click(function () {
+        clear();
+        let thisTime = ++current;
+        let handlers = [aHandler, bHandler, cHandler, dHandler, eHandler].map((action, i) => ({ action, i }));
         handlers = _.shuffle(handlers);
-        handlers.push(bubbleHandler);
-        robot(handlers, 0, 0, display);
+        $('#order').text(handlers.map(li => String.fromCharCode(65 + li.i)).join(", "));
+        handlers.push({ action: bubbleHandler });
+        robot(handlers.map(({action}) => action), 0, 0, display, thisTime);
     });
 });

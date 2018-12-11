@@ -104,6 +104,16 @@ ul {
     font-weight: bold;
 }
 
+.user {
+    top: 10px;
+    left: 20px;
+}
+
+.user span {
+    font-size: 15px;
+    color: white;
+}
+
 .like {
     top: 95px;
     left: 74px;

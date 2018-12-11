@@ -99,6 +99,26 @@ ul {
     font-weight: bold;
 }
 
+.user {
+    top: 10px;
+    left: 15px;
+}
+
+.user span {
+    font-size: 15px;
+    color: white;
+}
+
+.ss {
+    top: 100px;
+    left: 10px;
+}
+
+.ss span {
+    font-size: 15px;
+    color: white;
+}
+
 .like {
     top: 95px;
     left: 74px;
