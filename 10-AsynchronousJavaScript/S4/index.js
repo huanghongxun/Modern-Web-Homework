@@ -1,5 +1,6 @@
 $(document).ready(function () {
     let current = 0;
+    let clicked = true;
 
     liClickAsync = (li, time) => new Promise(function (resolve, reject) {
         if (li.attr('value')) return;
@@ -34,7 +35,8 @@ $(document).ready(function () {
     });
 
     $('#bottom-positioner').mouseenter(function (e) {
-        current++;
+        ++current;
+        clicked = false;
         $('#control-ring li .unread').text('...');
         $('#control-ring li').removeAttr('value')
             .removeAttr('calculating')
@@ -46,6 +48,8 @@ $(document).ready(function () {
     });
 
     $('.apb').click(function () {
+        if (clicked) return;
+        clicked = true;
         let thisTime = current;
         let lis = $('#control-ring li').toArray().map((object, i) => ({ object, i }));
         lis = _.shuffle(lis);
