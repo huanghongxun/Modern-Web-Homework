@@ -19,6 +19,12 @@ module.exports = { // url: /
                 return;
             }
         }
+
+        if (req.user) {
+            res.redirect('/user/profile'); // 6.a
+            return;
+        }
+
         res.send(render({locals: { user: req.user }}));
     }
 };
